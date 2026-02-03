@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Build binaries
+        run: |
+          # Linux AMD64
+          GOOS=linux GOARCH=amd64 go build -o wrun-linux-amd64
+          
+          # Linux ARM64
+          GOOS=linux GOARCH=arm64 go build -o wrun-linux-arm64
+          
+          # macOS AMD64
+          GOOS=darwin GOARCH=amd64 go build -o wrun-darwin-amd64
+          
+          # macOS ARM64
+          GOOS=darwin GOARCH=arm64 go build -o wrun-darwin-arm64
+          
+          # Windows AMD64
+          GOOS=windows GOARCH=amd64 go build -o wrun-windows-amd64.exe
+          
+          # Windows ARM64
+          GOOS=windows GOARCH=arm64 go build -o wrun-windows-arm64.exe
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            wrun-linux-amd64
+            wrun-linux-arm64
+            wrun-darwin-amd64
+            wrun-darwin-arm64
+            wrun-windows-amd64.exe
+            wrun-windows-arm64.exe
+          generate_release_notes: true
