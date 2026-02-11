@@ -1,4 +1,4 @@
-# wrun
+# watchrun
 
 A simple file watcher that executes commands when files change.
 
@@ -13,21 +13,21 @@ A simple file watcher that executes commands when files change.
 ## Installation
 
 ```bash
-go install github.com/jwhitaker/wrun@latest
+go install github.com/jwhitaker/watchrun@latest
 ```
 
 Or build from source:
 
 ```bash
-git clone https://github.com/jwhitaker/wrun.git
-cd wrun
+git clone https://github.com/jwhitaker/watchrun.git
+cd watchrun
 go build
 ```
 
 ## Usage
 
 ```bash
-wrun [flags] -- [command to execute]
+watchrun [flags] -- [command to execute]
 ```
 
 ### Flags
@@ -39,22 +39,22 @@ wrun [flags] -- [command to execute]
 
 Watch all Go files and run tests:
 ```bash
-wrun --pattern "**/*.go" -- go test ./...
+watchrun --pattern "**/*.go" -- go test ./...
 ```
 
 Watch JavaScript files and run build:
 ```bash
-wrun -p "*.js" -- npm run build
+watchrun -p "*.js" -- npm run build
 ```
 
 Watch TypeScript files in src directory with custom debounce:
 ```bash
-wrun -p "src/**/*.ts" -d 500 -- npm run build
+watchrun -p "src/**/*.ts" -d 500 -- npm run build
 ```
 
 Watch all files (default pattern):
 ```bash
-wrun -- make build
+watchrun -- make build
 ```
 
 ## Glob Patterns

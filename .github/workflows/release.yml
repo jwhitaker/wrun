@@ -24,31 +24,31 @@ jobs:
       - name: Build binaries
         run: |
           # Linux AMD64
-          GOOS=linux GOARCH=amd64 go build -o wrun-linux-amd64
+          GOOS=linux GOARCH=amd64 go build -o watchrun-linux-amd64
           
           # Linux ARM64
-          GOOS=linux GOARCH=arm64 go build -o wrun-linux-arm64
+          GOOS=linux GOARCH=arm64 go build -o watchrun-linux-arm64
           
           # macOS AMD64
-          GOOS=darwin GOARCH=amd64 go build -o wrun-darwin-amd64
+          GOOS=darwin GOARCH=amd64 go build -o watchrun-darwin-amd64
           
           # macOS ARM64
-          GOOS=darwin GOARCH=arm64 go build -o wrun-darwin-arm64
+          GOOS=darwin GOARCH=arm64 go build -o watchrun-darwin-arm64
           
           # Windows AMD64
-          GOOS=windows GOARCH=amd64 go build -o wrun-windows-amd64.exe
+          GOOS=windows GOARCH=amd64 go build -o watchrun-windows-amd64.exe
           
           # Windows ARM64
-          GOOS=windows GOARCH=arm64 go build -o wrun-windows-arm64.exe
+          GOOS=windows GOARCH=arm64 go build -o watchrun-windows-arm64.exe
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            wrun-linux-amd64
-            wrun-linux-arm64
-            wrun-darwin-amd64
-            wrun-darwin-arm64
-            wrun-windows-amd64.exe
-            wrun-windows-arm64.exe
+            watchrun-linux-amd64
+            watchrun-linux-arm64
+            watchrun-darwin-amd64
+            watchrun-darwin-arm64
+            watchrun-windows-amd64.exe
+            watchrun-windows-arm64.exe
           generate_release_notes: true

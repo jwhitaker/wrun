@@ -1,4 +1,4 @@
-module github.com/jwhitaker/wrun
+module github.com/jwhitaker/watchrun
 
 go 1.21
 
